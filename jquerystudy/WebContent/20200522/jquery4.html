@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200522/jquery4.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>nth-child,nth-of-type 차이 예제</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+	/*
+		$("h2:nth-child(3n)").css({"background":"black","color":"white"});
+		$("h2:nth-child(3n+1)").css({"background":"yellow","color":"blue"});
+		$("h2:nth-child(3n+2)").css({"background":"blue","color":"yellow"});
+		
+		nht-child 는 h2태그만 새는 것이 아니라 모든 태그의 수를 읽는다.
+		nth-of-type 는 h2 태그만 읽는다.
+	*/
+		$("h2:nth-of-type(3n)").css({"background":"black","color":"white"});
+		$("h2:nth-of-type(3n+1)").css({"background":"yellow","color":"blue"});
+		$("h2:nth-of-type(3n+2)").css({"background":"blue","color":"yellow"});
+	
+		$("h3:nth-of-type(2n+1)").css({"background":"yellow","color":"blue"});
+		$("h3:nth-of-type(2n)").css("background","black").css("color","yellow")
+		
+		
+	/*
+		$("h1:eq(0)").css({"background":"pink","color":"red"})
+		$("h1:eq(1)").css({"background":"pink","color":"orange"})
+		$("h1:eq(2)").css({"background":"pink","color":"yellow"})
+		$("h1:eq(3)").css({"background":"pink","color":"green"})
+		$("h1:eq(4)").css({"background":"pink","color":"blue"})
+		$("h1:eq(5)").css({"background":"pink","color":"navy"})
+	*/
+	
+	var colors=["red","orange","yellow","green","blue","navy"] 		//  [] 는 배열
+	
+	// $("h1") : 'h1 태그들' 이라고 읽으면됨.
+	//each : 반복 구문
+	
+	/*
+		$("h1").each(function(i,item){	//i: 인덱스, item: h1태그 1개
+			//this : h1태그
+			$(this).css({"background":"pink","color":colors[i]})
+		})
+	*/
+	
+	//colors 배열 반복
+	$.each(colors,function(i,color){
+		$("h1:eq("+i+")").css({"background":"pink","color":color})
+		})
+	
+	
+	})
+</script>
+</head>
+<body>
+h3 태그 중 홀수 번째를 노랑바탕에 파란글씨로, 짝수 번째 를  검정바탕에 노랑 글씨로 변경
+<h3>H3:Header_0</h3>
+<h3>H3:Header_1</h3>
+<h3>H3:Header_2</h3>
+<h3>H3:Header_3</h3>
+<h3>H3:Header_4</h3>
+<h3>H3:Header_5</h3>
+
+<hr>
+h2 태그 중 3의 배수인 경우 검정 바탕에 흰글씨로, 3배수의 나머지가 1 경우 노랑 바탕에 파랑글씨로 설정하기
+<h2>H2:Header_0</h2>
+<h2>H2:Header_1</h2>
+<h2>H2:Header_2</h2>
+<h2>H2:Header_3</h2>
+<h2>H2:Header_4</h2>
+<h2>H2:Header_5</h2>
+
+<hr>
+h1태그의 색상을 분홍 바탕에 첫번째는 빨강, 두번째 오렌지, 세번째 노랑, 네번째 초록, 다섯번째 파랑
+<h1>H1:Header_0</h1>
+<h1>H1:Header_1</h1>
+<h1>H1:Header_2</h1>
+<h1>H1:Header_3</h1>
+<h1>H1:Header_4</h1>
+<h1>H1:Header_5</h1>
+
+</body>
+</html>

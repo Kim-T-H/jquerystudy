@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- /jquerystudy/WebContent/20200521/jquery1.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Jquery 예제1</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+ * $(document).ready(function(){....} : 현재 페이지가 준비 완료된 경우 function 함수를 실행.
+ */
+	$(document).ready(function(){
+		//모든 태그들의 색을 분홍색으로 설정 .  위에서 부터 색깔 지정이 시작됨.
+		$("*").css("color","pink")
+		
+		//p태그의 글자색을 파랑색으로 설정. css 가 style 을 지정하는 함수와 비슷함.
+		$("p").css("color","blue")
+		//h1태그의 글자색을 파랑색으로 설정.
+		$("h1").css("color","red")
+		//class속성이 item 인 태그의 글자색을  초록색으로 설정.
+		$(".item").css("color","green")
+		//id속성이 selected 인 태그의 글자색을 오렌지색으로 설정.
+		$("#selected").css("color","orange")
+		
+	})
+	
+	
+	//이렇게 써도됨.
+	$(function(){
+		alert("문서 준비 완료")
+	})
+</script>
+</head>
+<body>
+<h1>Jquery1<p>Jquery1</p></h1>
+<h1>Jquery1</h1>
+<p>Jquery1</p>
+<h1 class="item">Jquery1 class=item</h1>
+<h1 id="selected">Jquery1 id=selected</h1>
+<h2>Jquery1</h2>
+<h3>Jquery1</h3>
+</body>
+</html>

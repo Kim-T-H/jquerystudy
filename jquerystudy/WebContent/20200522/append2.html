@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- /WebContent/20200522/append2.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>이미지 위치 변경하기</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//img 태그의 가로크 300설정
+		$("img").css("width",300);
+		setInterval(function(){						//setInterval(function(){},2000) => 2초마다!! function 을 호출
+			$("img").first().appendTo("body");		//setTimeout(function(){},2000) => 2초후에 function 을 호출 => 1번만 호출!!
+		},2000)
+		
+	})
+</script>
+</head>
+<body>
+	<img src="Jellyfish.jpg" />
+	<img src="Desert.jpg" />
+	<img src="Koala.jpg" />
+
+</body>
+</html>

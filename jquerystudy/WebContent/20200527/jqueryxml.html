@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--  /WebContent/20200527/jqueryxml.html -->
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>XML 연습</title>
+<script type="text/javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+	  $("#btn").click(function(){
+		  $.ajax("person.xml",{
+			  success : function(data) {
+			    $(data).find("person").each(function(){
+			    	//$(this) : person 태그
+				  name = "<li>"+$(this).find("name").text()+ "</li>"
+				  gender = "<li>"+$(this).find("gender").text()+ "</li>"
+				  part = "<li>"+$(this).find("part").text()+ "</li>"
+				  $("#person").append("<ul>"+name+gender+part+"</ul>")
+				})
+			  },
+			  error : function(e){
+				  alert("서버오류:" + e.status)
+			  }
+		  })
+	  })
+	  //=== 전체 구버튼 클릭 시 ===
+	  // address.xml을 읽어 하나의 <ul>태그로 출력하기
+	  $("#allbtn").click(function(){
+		  $("#state").html("");
+		  $.ajax("address.xml",{
+			  success : function(data){
+				  $("#state").append("<ul>")
+				  $(data).find("state").each(function(){
+				   $("#state").append("<li>"+$(this).text()+"</li>")
+				  })
+				  $("#state").append("</ul>")
+			  },
+			  error : function(e){
+				  alert("서버 오류:" + e.status);
+			  }
+		  })
+	  })
+  })
+  function statebtn(st) { //st=east
+	  $("#state").html("");
+	  $.ajax("address.xml",{
+		  success : function(data){
+			  $("#state").append("<ul>")
+			  $(data).find(st).find("state").each(function(){
+			   $("#state").append("<li>"+$(this).text()+"</li>")
+			  })
+			  $("#state").append("</ul>")
+		  },
+		  error : function(e){
+			  alert("서버 오류:" + e.status);
+		  }
+	  })
+  }
+</script>
+</head>
+<body>
+<button id="btn">XML 연습</button>
+<div id="person"></div>
+<button id="allbtn">전체 구</button>
+<button onclick="statebtn('east')">동쪽 구</button>
+<button onclick="statebtn('west')">서쪽 구</button>
+<button onclick="statebtn('south')">남쪽 구</button>
+<button onclick="statebtn('north')">북쪽 구</button>
+<div id="state"></div></body>
+</html>
